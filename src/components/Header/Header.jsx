@@ -1,9 +1,8 @@
-import React from "react";
-import "./Header.scss";
-import logo from "../../images/stock_logo.svg";
-import liked from "../../images/liked.svg";
-import cart from "../../images/cart.svg";
-
+import React from 'react';
+import './Header.scss';
+import logo from '../../images/stock_logo.svg';
+import liked from '../../images/liked.svg';
+import cart from '../../images/cart.svg';
 
 const Header = () => {
   return (
@@ -20,10 +19,14 @@ const Header = () => {
         <a className="svg-button" href="">
           <img src={cart} alt="" />
         </a>
-        <a className="ebujaknazvatu" href="">Register</a>
+        <a className="ebujaknazvatu" href="">
+          Register
+        </a>
         <p className="separator">|</p>
-        <a className="ebujaknazvatu" href="">Log In</a>
-       </div>
+        <a className="ebujaknazvatu" href="">
+          Log In
+        </a>
+      </div>
     </div>
   );
 };

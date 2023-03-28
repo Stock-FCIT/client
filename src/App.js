@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import Header from "./components/Header/Header";
+import Main from "./Pages/Main/Main";
 
 function App() {
   return (
@@ -8,10 +9,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>  
-          {/*
-          <Route path="/" element={<div>VAsyl dyakuiu</div>}/>
-          <Route path="/about" element={<div>Vasyl programmer</div>}/>
-           */}
+          {
+          <Route path="/" element={<Main/>}/>
+          }
         </Routes>
       </BrowserRouter>
     </div>
