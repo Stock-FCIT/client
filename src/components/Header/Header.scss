@@ -7,7 +7,7 @@
     font-weight: bold;
     }
 
-.header-container{
+.headerContainer{
     padding: 0 80px;
     background-color:#9E9D24;
     display: flex;
@@ -19,15 +19,13 @@
     top: -10px;
     box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
 
-    
-
-    .header-left{
+    .headerLeft{
         align-items: center;
         display: flex;
         .logo{
             padding-right: 22px;
         }
-        .logo-name{
+        .logoName{
             letter-spacing: 4px;
             font-family: Planet;
             color: white;
@@ -36,18 +34,19 @@
         
     }
 
-    .header-right{
+    .headerRight{
         align-items: center;
         display: flex;
-        .svg-button{
-            padding-right: 37px;
+        .svgButton{
+            margin-right: 37px;
         }
         .separator{
             padding: 0 15px;
             color: #A5D6A7;
+            pointer-events: none;
         }
 
-        .ebujaknazvatu{
+        .register, .login{
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
             text-decoration: none;
@@ -56,5 +55,5 @@
         }
 
     }
-
+    
 }
