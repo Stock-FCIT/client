@@ -1,56 +1,66 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { useMenuState, Menu, MenuItem, MenuButton } from 'reakit/Menu';
 
-import './Dropdown.scss';
+import styles from './Dropdown.module.scss';
 
-const Dropdown = ({ title, items }) => {
-  const [isDropDownVisible, setIsDropDownVisible] = useState(false);
+import closeButton from '../../images/close.svg';
+import arrow from '../../images/arrow.svg';
 
-  const [itemList, setItemList] = useState(items);
+const ReakitDropdown = ({ title, items, type }) => {
+  const menu = useMenuState({ visible: false });
 
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
 
-  let menuRef = useRef();
-
-  useEffect(() => {
-    let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setIsDropDownVisible(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handler);
-
-    return () => {
-      document.removeEventListener('mousedown', handler);
-    };
-  });
-
+  const children = React.useCallback(
+    (itemProps) => (
+      <div {...itemProps}>
+        <div>{itemProps.id}</div>
+      </div>
+    ),
+    [],
+  );
   return (
-    <div className="custom-dropdown">
-      <div
-        ref={menuRef}
-        className={'custom-dropdown-selection ' + (isDropDownVisible ? 'visible' : '')}
-        onClick={(e) => {
-          setIsDropDownVisible(!isDropDownVisible);
-        }}>
-        {selectedItemIndex != null ? itemList[selectedItemIndex].name : `${title}`}
-      </div>
+    <div className={styles.dropdown}>
+      <MenuButton
+        className={
+          type === 'category' ? styles.dropdownSelectionCategory : styles.dropdownSelectionSort
+        }
+        {...menu}>
+        {selectedItemIndex != null ? items[selectedItemIndex] : `${title}`}
+      </MenuButton>
+      {selectedItemIndex != null ? (
+        <img
+          className={styles.closeButton}
+          src={closeButton}
+          alt="Close Button"
+          onClick={(e) => setSelectedItemIndex(null)}
+        />
+      ) : (
+        <img
+          className={styles.arrow}
+          src={arrow}
+          alt="Arrow"
+          onClick={(e) => setSelectedItemIndex(null)}
+        />
+      )}
 
-      <div className={'items-holder ' + (isDropDownVisible ? 'visible' : '')}>
-        {itemList.map((item, index) => (
-          <div
-            key={item.value}
-            className="dropdown-item"
+      <Menu className={styles.itemsHolder} {...menu} aria-label={selectedItemIndex}>
+        {items.map((name, id) => (
+          <MenuItem
+            className={styles.dropdownItem}
+            {...menu}
+            key={id}
+            id={name}
             onClick={(e) => {
-              setSelectedItemIndex(index);
-              setIsDropDownVisible(false);
+              setSelectedItemIndex(id);
+              menu.hide();
             }}>
-            {item.name}
-          </div>
+            {children}
+          </MenuItem>
         ))}
-      </div>
+      </Menu>
     </div>
   );
 };
 
-export default Dropdown;
+export default ReakitDropdown;

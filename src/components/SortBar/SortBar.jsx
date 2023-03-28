@@ -1,6 +1,6 @@
 import React from 'react';
 import './SortBar.scss';
-import ReakitDropdown from '../ReakitDropdown/ReakitDropdown';
+import ReakitDropdown from '../Dropdown/Dropdown';
 
 const SortBar = () => {
   const category = [
@@ -24,7 +24,7 @@ const SortBar = () => {
       />
 
       <div className="category-bar">
-        <ReakitDropdown title="Choose category" items={category} />
+        <ReakitDropdown title="Choose category" items={category} type="category" />
       </div>
 
       <div className="sort-bar">
