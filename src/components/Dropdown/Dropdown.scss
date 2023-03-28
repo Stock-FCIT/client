@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@400;500;700&display=swap');
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.custom-dropdown {
+  width: 100%;
+  position: relative;
+
+  .custom-dropdown-selection {
+    font-family: 'Heebo', sans-serif;
+    box-sizing: border-box;
+    border: 1px solid #dedee0;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #707070;
+    background-color: #f9fafb;
+    background-image: url('../../images/search.svg');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+      display: block;
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid #7b7b56;
+      border-bottom: 2px solid #7b7b56;
+      transform: rotate(45deg);
+      position: absolute;
+      right: 15px;
+      top: 12px;
+      transition: ease 0.2s;
+    }
+    &.visible::after {
+      transform: rotate(135deg);
+      top: 15px;
+    }
+
+    &.cancel::after {
+      border-top: 2px solid #7b7b56;
+      border-right: 2px solid #7b7b56;
+      border-left: 2px solid #7b7b56;
+      border-bottom: 2px solid #7b7b56;
+      border-radius: 4px;
+      transform: rotate(0deg);
+      width: 15px;
+      height: 15px;
+      top: 10px;
+      content: 'as';
+    }
+  }
+
+  .items-holder {
+    display: block;
+    background-color: #fff;
+    border: 1px solid #dedee0;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Heebo', sans-serif;
+    opacity: 0%;
+
+    &.visible {
+      opacity: 100%;
+      transition: ease 1s;
+      height: 100%;
+    }
+
+
+    .dropdown-item  {
+      padding: 7px 12px;
+      cursor: pointer;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+      &:first-child {
+        padding-top: 10px;
+      }
+      &:last-child {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
