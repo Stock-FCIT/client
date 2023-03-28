@@ -1,32 +1,29 @@
-import React from 'react';
-import './Header.scss';
-import logo from '../../images/stock_logo.svg';
-import liked from '../../images/liked.svg';
-import cart from '../../images/cart.svg';
+import React from "react";
+import "./Header.scss";
+import logo from "../../images/stock_logo.svg";
+import liked from "../../images/liked.svg";
+import cart from "../../images/cart.svg";
+
 
 const Header = () => {
   return (
-    <div className="header-container">
-      <div className="header-left">
+    <div className="headerContainer">
+      <div className="headerLeft">
         <img className="logo" src={logo} alt="Logo" />
-        <h1 className="logo-name">Stock</h1>
+        <h1 className="logoName">Stock</h1>
       </div>
 
-      <div className="header-right">
-        <a className="svg-button" href="">
+      <div className="headerRight">
+        <a className="svgButton" href="">
           <img src={liked} alt="" />
         </a>
-        <a className="svg-button" href="">
+        <a className="svgButton" href="">
           <img src={cart} alt="" />
         </a>
-        <a className="ebujaknazvatu" href="">
-          Register
-        </a>
+        <a className="register" href="">Register</a>
         <p className="separator">|</p>
-        <a className="ebujaknazvatu" href="">
-          Log In
-        </a>
-      </div>
+        <a className="login" href="">Log In</a>
+       </div>
     </div>
   );
 };
