@@ -1,59 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
 
 @font-face {
-    font-family: "Planet";
-    src: local("Planet3D"),
-     url("../../fonts/planetncompact.ttf") format("truetype");
-    font-weight: bold;
-    }
+  font-family: 'Planet';
+  src: local('Planet3D'), url('../../fonts/planetncompact.ttf') format('truetype');
+  font-weight: bold;
+}
 
-.headerContainer{
-    padding: 0 80px;
-    background-color:#9E9D24;
-    display: flex;
+.headerContainer {
+  padding: 0 80px;
+  background-color: #9e9d24;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  position: sticky;
+  z-index: 999;
+  top: -10px;
+  box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
+
+  .headerLeft {
     align-items: center;
-    justify-content: space-between;
-    height: 76px;
-    position: sticky;
-    z-index: 999;
-    top: -10px;
-    box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+    display: flex;
+    .logo {
+      padding-right: 22px;
+    }
+    .logoName {
+      letter-spacing: 4px;
+      font-family: 'Planet';
+      color: white;
+      text-transform: uppercase;
+    }
+  }
 
-    .headerLeft{
-        align-items: center;
-        display: flex;
-        .logo{
-            padding-right: 22px;
-        }
-        .logoName{
-            letter-spacing: 4px;
-            font-family: Planet;
-            color: white;
-            text-transform: uppercase;
-        }    
-        
+  .headerRight {
+    align-items: center;
+    display: flex;
+    .svgButton {
+      margin-right: 37px;
+    }
+    .separator {
+      padding: 0 15px;
+      color: #a5d6a7;
+      pointer-events: none;
     }
 
-    .headerRight{
-        align-items: center;
-        display: flex;
-        .svgButton{
-            margin-right: 37px;
-        }
-        .separator{
-            padding: 0 15px;
-            color: #A5D6A7;
-            pointer-events: none;
-        }
-
-        .register, .login{
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            text-decoration: none;
-            color:white;
-            text-transform: uppercase;
-        }
-
+    .register,
+    .login {
+      font-weight: 400;
+      text-decoration: none;
+      color: white;
+      text-transform: uppercase;
+      font-family: 'Heebo', sans-serif;
     }
-    
+  }
 }

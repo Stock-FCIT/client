@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
+
 .dropdownSSS {
   width: 100% !important ;
 }
@@ -20,14 +22,17 @@
 
 .dropdownSelectionCategory {
   background-image: url('../../images/category.svg');
+  height: 40px;
 }
 
 .dropdownSelectionSort {
   background-image: url('../../images/sort.svg');
   background-position: 10px 7px;
+  height: 40px;
 }
 
 .itemsHolder {
+  box-sizing: border-box;
   position: relative !important;
   background-color: #fff;
   border: 1px solid #dedee0;
@@ -38,6 +43,8 @@
 }
 
 .dropdownItem {
+  font-family: 'Heebo', sans-serif;
+
   padding: 7px 10px;
   transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
   cursor: pointer;
@@ -60,7 +67,7 @@
 .closeButton {
   position: relative;
   right: 35px;
-  top: 8px;
+  top: 6px;
   cursor: pointer;
   transition: ease-in 0.1s;
 }
@@ -68,7 +75,7 @@
 .arrow {
   position: relative;
   right: 30px;
-  top: 2px;
+  top: 0px;
   transition: ease-in 0.1s;
   pointer-events: none;
 }

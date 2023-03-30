@@ -21,6 +21,7 @@ const SortBar = () => {
         type="text"
         name="search"
         placeholder="Search products by name"
+        autoComplete="off"
       />
 
       <div className="category-bar">
