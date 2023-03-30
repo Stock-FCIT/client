@@ -44,7 +44,7 @@ const ReakitDropdown = ({ title, items, type }) => {
         />
       )}
 
-      <Menu className={styles.itemsHolder} {...menu} aria-label={selectedItemIndex}>
+      <Menu className={styles.itemsHolder} {...menu} aria-label="Preferences">
         {items.map((name, id) => (
           <MenuItem
             className={styles.dropdownItem}
