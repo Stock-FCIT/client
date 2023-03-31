@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDialogState, Dialog, DialogBackdrop, DialogDisclosure } from 'reakit/Dialog';
 import {
   unstable_useFormState as useFormState,
@@ -12,14 +12,25 @@ import closeDialog from '../../images/closeDialog.svg';
 import styles from './Register.module.scss';
 import Input from '../Input/Input';
 
-const Register = () => {
+const Register = ({ changeWindow, clickListener }) => {
   const dialog1 = useDialogState({ animated: true });
+
+  const handleWindowChange = () => {
+    dialog1.toggle();
+    changeWindow('login');
+  };
+
+  useEffect(() => {
+    if (clickListener === 'register') {
+      console.log(clickListener);
+      dialog1.toggle();
+    }
+  }, [clickListener]);
 
   const [passVisibility, setPassVisibility] = useState('password');
   const [buttonListener, setButtonListener] = useState(false);
 
   const form = useFormState({
-    validateOnBlur: false,
     values: { fullname: '', email: '', phone: '', password: '' },
     onValidate: (values) => {
       const errors = {};
@@ -163,7 +174,10 @@ const Register = () => {
             </div>
             <div className={styles.bottomDialog}>
               <div className={styles.bottomText}>
-                I already have an account, <span className={styles.logInButton}>Log In</span>
+                I already have an account,{' '}
+                <span className={styles.logInButton} onClick={handleWindowChange}>
+                  Log In
+                </span>
               </div>
             </div>
           </div>

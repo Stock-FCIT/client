@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDialogState, Dialog, DialogBackdrop, DialogDisclosure } from 'reakit/Dialog';
 import {
   unstable_useFormState as useFormState,
@@ -12,19 +12,29 @@ import closeDialog from '../../images/closeDialog.svg';
 import styles from './Login.module.scss';
 import Input from '../Input/Input';
 
-const Login = () => {
-  const dialog1 = useDialogState({ animated: true });
+const Login = ({ changeWindow, clickListener }) => {
+  const dialog2 = useDialogState({ animated: true });
+
+  const handleWindowChange = () => {
+    dialog2.toggle();
+    changeWindow('register');
+  };
+
+  useEffect(() => {
+    if (clickListener === 'login') {
+      dialog2.toggle();
+      console.log(clickListener);
+    }
+  }, [clickListener]);
 
   const [passVisibility, setPassVisibility] = useState('password');
   const [buttonListener, setButtonListener] = useState(false);
 
   const form = useFormState({
-    validateOnBlur: false,
-    values: {email: '', password: '' },
+    values: { email: '', password: '' },
     onValidate: (values) => {
       const errors = {};
       if (buttonListener) {
-        
         //Email
         if (!values.email) {
           errors.email = 'Mandatory info missing';
@@ -50,13 +60,13 @@ const Login = () => {
 
   return (
     <>
-      <DialogDisclosure className={styles.registerButton} {...dialog1}>
+      <DialogDisclosure className={styles.registerButton} {...dialog2}>
         Login
       </DialogDisclosure>
-      <DialogBackdrop {...dialog1} className={styles.backdropStyles}>
-        <Dialog {...dialog1} aria-label="Welcome" className={styles.dialogStyles}>
+      <DialogBackdrop {...dialog2} className={styles.backdropStyles}>
+        <Dialog {...dialog2} aria-label="Welcome" className={styles.dialogStyles}>
           <img
-            onClick={() => dialog1.hide()}
+            onClick={() => dialog2.hide()}
             className={styles.closeDialog}
             src={closeDialog}
             alt="closeDialog"
@@ -91,7 +101,6 @@ const Login = () => {
                     onMouseDown={(e) => setPassVisibility('none')}
                     onMouseUp={(e) => setPassVisibility('password')}
                   />
-
                 </div>
 
                 <FormSubmitButton
@@ -106,7 +115,11 @@ const Login = () => {
             </div>
             <div className={styles.bottomDialog}>
               <div className={styles.bottomText}>
-                I have no account, <span className={styles.logInButton}>Register now</span>
+                I have no account,{' '}
+                <span className={styles.logInButton} onClick={handleWindowChange}>
+                  {' '}
+                  Register now
+                </span>
               </div>
             </div>
           </div>

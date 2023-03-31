@@ -158,8 +158,11 @@ body {
     font-size: 14px;
 
     .logInButton {
-      color: #4FBCA1;
+      color: #4fbca1;
       cursor: pointer;
+      &:hover {
+        color: #00695c;
+      }
     }
   }
 }

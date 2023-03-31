@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
 import logo from '../../images/stock_logo.svg';
 import liked from '../../images/liked.svg';
@@ -7,6 +7,12 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 
 const Header = () => {
+  const [clickListener, setClickListener] = useState('');
+
+  const handleWindowChange = (value) => {
+    setClickListener(value);
+  };
+
   return (
     <div className="headerContainer">
       <div className="headerLeft">
@@ -21,9 +27,9 @@ const Header = () => {
         <a className="svgButton" href="">
           <img src={cart} alt="" />
         </a>
-        <Register />
+        <Register changeWindow={handleWindowChange} clickListener={clickListener} />
         <p className="separator">|</p>
-        <Login/>
+        <Login changeWindow={handleWindowChange} clickListener={clickListener} />
       </div>
     </div>
   );
