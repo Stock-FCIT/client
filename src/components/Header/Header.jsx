@@ -4,6 +4,7 @@ import logo from '../../images/stock_logo.svg';
 import liked from '../../images/liked.svg';
 import cart from '../../images/cart.svg';
 import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 const Header = () => {
   return (
@@ -22,7 +23,7 @@ const Header = () => {
         </a>
         <Register />
         <p className="separator">|</p>
-        <div className="login">Log In</div>
+        <Login/>
       </div>
     </div>
   );
