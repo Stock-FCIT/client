@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDialogState, Dialog, DialogBackdrop, DialogDisclosure } from 'reakit/Dialog';
 import {
   unstable_useFormState as useFormState,
@@ -12,19 +12,19 @@ import closeDialog from '../../images/closeDialog.svg';
 import styles from './Login.module.scss';
 import Input from '../Input/Input';
 
-const Login = () => {
-  const dialog1 = useDialogState({ animated: true });
+const Login = ({ changeWindow, dialog2 }) => {
+  const handleWindowChange = () => {
+    changeWindow(true);
+  };
 
   const [passVisibility, setPassVisibility] = useState('password');
   const [buttonListener, setButtonListener] = useState(false);
 
   const form = useFormState({
-    validateOnBlur: false,
-    values: {email: '', password: '' },
+    values: { email: '', password: '' },
     onValidate: (values) => {
       const errors = {};
       if (buttonListener) {
-        
         //Email
         if (!values.email) {
           errors.email = 'Mandatory info missing';
@@ -50,68 +50,66 @@ const Login = () => {
 
   return (
     <>
-      <DialogDisclosure className={styles.registerButton} {...dialog1}>
-        Login
-      </DialogDisclosure>
-      <DialogBackdrop {...dialog1} className={styles.backdropStyles}>
-        <Dialog {...dialog1} aria-label="Welcome" className={styles.dialogStyles}>
-          <img
-            onClick={() => dialog1.hide()}
-            className={styles.closeDialog}
-            src={closeDialog}
-            alt="closeDialog"
-          />
-          <div className={styles.dialogContainer}>
-            <div className={styles.topSectionWrapper}>
-              <div className={styles.title}>Login</div>
-              <Form className={styles.form} {...form}>
-                {/* EMAIL */}
+      <div>
+        <img
+          onClick={() => dialog2.hide()}
+          className={styles.closeDialog}
+          src={closeDialog}
+          alt="closeDialog"
+        />
+        <div className={styles.dialogContainer}>
+          <div className={styles.topSectionWrapper}>
+            <div className={styles.title}>Login</div>
+            <Form className={styles.form} {...form}>
+              {/* EMAIL */}
+              <Input
+                name="email"
+                placeholder="Email"
+                value={form.values.email}
+                error={form.errors.email}
+                form={form}
+              />
+
+              {/* PASSWORD */}
+              <div className={styles.inputBox}>
                 <Input
-                  name="email"
-                  placeholder="Email"
-                  value={form.values.email}
-                  error={form.errors.email}
+                  name="password"
+                  placeholder="Password"
+                  value={form.values.password}
+                  error={form.errors.password}
                   form={form}
+                  type={passVisibility}
                 />
-
-                {/* PASSWORD */}
-                <div className={styles.inputBox}>
-                  <Input
-                    name="password"
-                    placeholder="Password"
-                    value={form.values.password}
-                    error={form.errors.password}
-                    form={form}
-                    type={passVisibility}
-                  />
-                  <img
-                    className={styles.password}
-                    src={visiblePassword}
-                    alt="password"
-                    onMouseDown={(e) => setPassVisibility('none')}
-                    onMouseUp={(e) => setPassVisibility('password')}
-                  />
-
-                </div>
-
-                <FormSubmitButton
-                  className={styles.sumbitButton}
-                  onClick={() => {
-                    setButtonListener(true);
-                  }}
-                  {...form}>
-                  Login
-                </FormSubmitButton>
-              </Form>
-            </div>
-            <div className={styles.bottomDialog}>
-              <div className={styles.bottomText}>
-                I have no account, <span className={styles.logInButton}>Register now</span>
+                <img
+                  className={styles.password}
+                  src={visiblePassword}
+                  alt="password"
+                  onMouseDown={(e) => setPassVisibility('none')}
+                  onMouseUp={(e) => setPassVisibility('password')}
+                />
               </div>
+
+              <FormSubmitButton
+                className={styles.sumbitButton}
+                onClick={() => {
+                  setButtonListener(true);
+                }}
+                {...form}>
+                Login
+              </FormSubmitButton>
+            </Form>
+          </div>
+          <div className={styles.bottomDialog}>
+            <div className={styles.bottomText}>
+              I have no account,{' '}
+              <span className={styles.logInButton} onClick={handleWindowChange}>
+                {' '}
+                Register now
+              </span>
             </div>
           </div>
-        </Dialog>
-      </DialogBackdrop>
+        </div>
+      </div>
     </>
   );
 };
