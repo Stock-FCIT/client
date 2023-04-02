@@ -1,12 +1,14 @@
-.wrapper {
-  margin: 15px auto;
+.mainWrapper {
   width: 60%;
+  margin: 10px auto;
 }
 
-// body {
-//   background: url('../../images/leftPalm.png') -70% -50% no-repeat,
-//     url('../../images/rightPalm.png') 190% -50% no-repeat;
-// }
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
 
 .leftPalm {
   position: fixed;
