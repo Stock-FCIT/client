@@ -12,20 +12,10 @@ import closeDialog from '../../images/closeDialog.svg';
 import styles from './Register.module.scss';
 import Input from '../Input/Input';
 
-const Register = ({ changeWindow, clickListener }) => {
-  const dialog1 = useDialogState({ animated: true });
-
+const Register = ({ changeWindow, dialog1 }) => {
   const handleWindowChange = () => {
-    dialog1.toggle();
-    changeWindow('login');
+    changeWindow(false);
   };
-
-  useEffect(() => {
-    if (clickListener === 'register') {
-      console.log(clickListener);
-      dialog1.toggle();
-    }
-  }, [clickListener]);
 
   const [passVisibility, setPassVisibility] = useState('password');
   const [buttonListener, setButtonListener] = useState(false);
@@ -91,99 +81,92 @@ const Register = ({ changeWindow, clickListener }) => {
   });
 
   return (
-    <>
-      <DialogDisclosure className={styles.registerButton} {...dialog1}>
-        Register
-      </DialogDisclosure>
-      <DialogBackdrop {...dialog1} className={styles.backdropStyles}>
-        <Dialog {...dialog1} aria-label="Welcome" className={styles.dialogStyles}>
-          <img
-            onClick={() => dialog1.hide()}
-            className={styles.closeDialog}
-            src={closeDialog}
-            alt="closeDialog"
-          />
-          <div className={styles.dialogContainer}>
-            <div className={styles.topSectionWrapper}>
-              <div className={styles.title}>Register</div>
-              <Form className={styles.form} {...form}>
-                {/* FULL NAME */}
-                <Input
-                  name="fullname"
-                  placeholder="Full name"
-                  value={form.values.fullname}
-                  error={form.errors.fullname}
-                  form={form}
-                />
+    <div>
+      <img
+        onClick={() => dialog1.hide()}
+        className={styles.closeDialog}
+        src={closeDialog}
+        alt="closeDialog"
+      />
+      <div className={styles.dialogContainer}>
+        <div className={styles.topSectionWrapper}>
+          <div className={styles.title}>Register</div>
+          <Form className={styles.form} {...form}>
+            {/* FULL NAME */}
+            <Input
+              name="fullname"
+              placeholder="Full name"
+              value={form.values.fullname}
+              error={form.errors.fullname}
+              form={form}
+            />
 
-                {/* EMAIL */}
-                <Input
-                  name="email"
-                  placeholder="Email"
-                  value={form.values.email}
-                  error={form.errors.email}
-                  form={form}
-                />
+            {/* EMAIL */}
+            <Input
+              name="email"
+              placeholder="Email"
+              value={form.values.email}
+              error={form.errors.email}
+              form={form}
+            />
 
-                {/* PHONE */}
-                <Input
-                  name="phone"
-                  placeholder="Phone number"
-                  value={form.values.phone}
-                  error={form.errors.phone}
-                  form={form}
-                  type="number"
-                />
+            {/* PHONE */}
+            <Input
+              name="phone"
+              placeholder="Phone number"
+              value={form.values.phone}
+              error={form.errors.phone}
+              form={form}
+              type="number"
+            />
 
-                {/* PASSWORD */}
-                <div className={styles.inputBox}>
-                  <Input
-                    name="password"
-                    placeholder="Password"
-                    value={form.values.password}
-                    error={form.errors.password}
-                    form={form}
-                    type={passVisibility}
-                  />
-                  <img
-                    className={styles.password}
-                    src={visiblePassword}
-                    alt="password"
-                    onMouseDown={(e) => setPassVisibility('none')}
-                    onMouseUp={(e) => setPassVisibility('password')}
-                  />
+            {/* PASSWORD */}
+            <div className={styles.inputBox}>
+              <Input
+                name="password"
+                placeholder="Password"
+                value={form.values.password}
+                error={form.errors.password}
+                form={form}
+                type={passVisibility}
+              />
+              <img
+                className={styles.password}
+                src={visiblePassword}
+                alt="password"
+                onMouseDown={(e) => setPassVisibility('none')}
+                onMouseUp={(e) => setPassVisibility('password')}
+              />
 
-                  {form.errors.password ? (
-                    <></>
-                  ) : (
-                    <span className={styles.passwordHint}>
-                      The password has to be at least 1 uppercase, 1 special symbol and 1 number
-                    </span>
-                  )}
-                </div>
-
-                <FormSubmitButton
-                  className={styles.sumbitButton}
-                  onClick={() => {
-                    setButtonListener(true);
-                  }}
-                  {...form}>
-                  Register
-                </FormSubmitButton>
-              </Form>
-            </div>
-            <div className={styles.bottomDialog}>
-              <div className={styles.bottomText}>
-                I already have an account,{' '}
-                <span className={styles.logInButton} onClick={handleWindowChange}>
-                  Log In
+              {form.errors.password ? (
+                <></>
+              ) : (
+                <span className={styles.passwordHint}>
+                  The password has to be at least 1 uppercase, 1 special symbol and 1 number
                 </span>
-              </div>
+              )}
             </div>
+
+            <FormSubmitButton
+              className={styles.sumbitButton}
+              onClick={() => {
+                setButtonListener(true);
+              }}
+              {...form}>
+              Register
+            </FormSubmitButton>
+          </Form>
+        </div>
+        <div className={styles.bottomDialog}>
+          <div className={styles.bottomText}>
+            I already have an account,{' '}
+            <span className={styles.logInButton} onClick={handleWindowChange}>
+              Log In
+            </span>
           </div>
-        </Dialog>
-      </DialogBackdrop>
-    </>
+        </div>
+      </div>
+    </div>
   );
 };
 
