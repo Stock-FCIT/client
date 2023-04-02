@@ -1,0 +1,22 @@
+.wrapper {
+  margin: 15px auto;
+  width: 60%;
+}
+
+// body {
+//   background: url('../../images/leftPalm.png') -70% -50% no-repeat,
+//     url('../../images/rightPalm.png') 190% -50% no-repeat;
+// }
+
+.leftPalm {
+  position: fixed;
+  top: 220px;
+  left: -520px;
+  transform: rotate(-20deg);
+}
+
+.rightPalm {
+  position: fixed;
+  top: 250px;
+  right: -570px;
+}

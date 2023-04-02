@@ -8,6 +8,7 @@ import Login from '../Login/Login';
 
 
 import { useDialogState, Dialog, DialogBackdrop, DialogDisclosure } from 'reakit/Dialog';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [clickListener, setClickListener] = useState();
@@ -20,10 +21,10 @@ const Header = () => {
 
   return (
     <div className={styles.headerContainer}>
-      <div className={styles.headerLeft}>
+      <Link to='/' className={styles.headerLeft}>
         <img className={styles.logo} src={logo} alt="Logo" />
         <h1 className={styles.logoName}>Stock</h1>
-      </div>
+      </Link>
 
       <div className={styles.headerRight}>
         <a className={styles.svgButton} href="">

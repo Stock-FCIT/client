@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useDialogState, Dialog, DialogBackdrop, DialogDisclosure } from 'reakit/Dialog';
+import React, { useState } from 'react';
 import {
   unstable_useFormState as useFormState,
   unstable_Form as Form,
