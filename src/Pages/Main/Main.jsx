@@ -23,6 +23,10 @@ const Main = () => {
           <Item />
           <Item />
           <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
         </div>
       </div>
       apper
