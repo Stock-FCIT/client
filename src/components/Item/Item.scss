@@ -20,18 +20,33 @@
 
   .itemInfo {
     margin-left: 12px;
-    margin-top: -50px;
+    margin-top: -38px;
     .itemName {
       font-weight: 400;
       font-size: 15px;
       margin-bottom: 5px;
     }
-    
-    .favouriteButton{
+
+    .favouriteWrapper {
       position: relative;
       left: 155px;
-      top: 21px;
+      top: 12px;
+      width: fit-content;
+      height: 32px;
+
+      border-radius: 40px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.163407);
+      background: #fff;
+    }
+
+    .favouriteButton {
       cursor: pointer;
+      fill: #909191;
+      padding: 6px;
+
+      &:hover {
+        fill: #e57373;
+      }
     }
 
     .itemPrice {
