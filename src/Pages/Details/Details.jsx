@@ -27,7 +27,7 @@ const Details = () => {
         <div className="detailsWrapper">
           <div className="upper">
             <div className="upperLeft">
-              <img className="image" src={process.env.REACT_APP_API_URL + plant.img} alt="" />
+              <img className="image" src={plant.img} alt="" />
             </div>
             <div className="upperRight">
               <div className="name">{plant.name}</div>
