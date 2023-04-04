@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Main from './Pages/Main/Main';
 import Details from './Pages/Details/Details';
+import UserPage from "./Pages/UserPage/UserPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <div className="body">
           <Routes>{<Route path="/" element={<Main />} />}</Routes>
           <Routes>{<Route path="/plant/:id" element={<Details />} />}</Routes>
+          <Routes>{<Route path="/userPage" element={<UserPage />} />}</Routes>
         </div>
         <Footer />
       </BrowserRouter>
