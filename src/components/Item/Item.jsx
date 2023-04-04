@@ -9,7 +9,7 @@ const Item = ({ id, img, name, price }) => {
   return (
     <Link className="link" to={`/plant/${id}`}>
       <div className="itemHolder">
-        <img className="itemImage" src={process.env.REACT_APP_API_URL + img} alt="" />
+        <img className="itemImage" src={img} alt="" />
 
         <div className="itemInfo">
           <div className="favouriteWrapper">
