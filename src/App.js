@@ -3,6 +3,7 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Main from "./Pages/Main/Main";
+import UserPage from "./Pages/UserPage/UserPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Header />
         <div className="body">
           <Routes>{<Route path="/" element={<Main />} />}</Routes>
+          <Routes>{<Route path="/userPage" element={<UserPage />} />}</Routes>
         </div>
         <Footer />
       </BrowserRouter>
