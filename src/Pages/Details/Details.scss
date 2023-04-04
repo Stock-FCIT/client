@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap');
+
+.detailsWrapper {
+  width: 50%;
+  margin: 0 auto;
+  font-family: 'Heebo', sans-serif;
+
+  .upper {
+    display: flex;
+    justify-content: space-between;
+
+    .upperLeft {
+      background: #fff;
+      width: 55%;
+      height: 300px;
+      padding: 4px;
+      box-shadow: 0px 4px 14px rgba(121, 121, 121, 0.0527344);
+      border: 1px solid #e4e4e4;
+      border-radius: 4px;
+
+      .image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    }
+
+    .upperRight {
+      margin: auto 0;
+      width: 38%;
+
+      .name {
+        color: #373738;
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+      }
+
+      .category {
+        color: #707070;
+        font-weight: 400;
+        font-size: 15px;
+      }
+
+      .price {
+        color: #101010;
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+      }
+
+      .cartButton,
+      .favouriteButton {
+        text-align: center;
+        padding: 9px 0;
+        width: 100%;
+        background: #4fbca1;
+        border-radius: 4px;
+        color: #ffffff;
+        margin-top: 12px;
+        cursor: pointer;
+        transition: ease-in 0.1s;
+
+        &:hover {
+          background-color: #39a389;
+        }
+      }
+    }
+  }
+
+  .lower {
+    .title {
+      color: #101010;
+      font-weight: 700;
+      font-size: 20px;
+
+      margin-top: 30px;
+      margin-bottom: 25px;
+    }
+
+    .description {
+      color: #373738;
+      font-weight: 400;
+      font-size: 15px;
+      width: 82%;
+    }
+    padding-bottom: 40px;
+  }
+}
