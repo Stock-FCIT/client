@@ -19,7 +19,8 @@
     margin: 4px;
     width: 201px;
     height: 170px;
-    object-fit: fill;
+    object-fit: cover;
+    object-position: 0 40%;
   }
 
   .itemInfo {
