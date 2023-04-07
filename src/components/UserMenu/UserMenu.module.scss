@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400&display=swap');
+
+@keyframes rotateMenu {
+  0% {
+    transform: rotateX(-90deg);
+  }
+  70% {
+    transform: rotateX(20deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.userInfo {
+  font-family: 'Heebo', sans-serif;
+  margin: 12px;
+  margin-left: 17px;
+}
+
+.userName {
+  letter-spacing: 0.4px;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 2px;
+  color: #373738;
+}
+
+.userEmail {
+  letter-spacing: 0.4px;
+  font-size: 14px;
+  color: #707070;
+}
+
+.menuSeparator {
+  border: 1px solid #e4e4e4;
+  width: 100%;
+  margin: 0;
+}
+
+.settingsButton,
+.logOutButton {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  padding-left: 17px;
+  &:hover {
+    background-color: #e7e7e7;
+  }
+  width: 100%;
+}
+
+.settingsButton {
+  color: #373738;
+}
+
+.logOutButton {
+  color: #d50000;
+}
