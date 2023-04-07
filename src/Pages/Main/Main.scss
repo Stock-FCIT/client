@@ -7,18 +7,4 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  
-}
-
-.leftPalm {
-  position: fixed;
-  top: 220px;
-  left: -520px;
-  transform: rotate(-20deg);
-}
-
-.rightPalm {
-  position: fixed;
-  top: 250px;
-  right: -570px;
 }

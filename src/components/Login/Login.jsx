@@ -1,23 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   unstable_useFormState as useFormState,
   unstable_Form as Form,
   unstable_FormSubmitButton as FormSubmitButton,
 } from 'reakit/Form';
+import { observer } from 'mobx-react-lite';
 
 import visiblePassword from '../../images/eye.svg';
 import closeDialog from '../../images/closeDialog.svg';
 
 import styles from './Login.module.scss';
 import Input from '../Input/Input';
+import { login, getUserInfo } from '../../http/userAPI';
+import { Context } from '../../index';
 
-const Login = ({ changeWindow, dialog2 }) => {
+const Login = observer(({ changeWindow, dialog2 }) => {
   const handleWindowChange = () => {
     changeWindow(true);
   };
 
   const [passVisibility, setPassVisibility] = useState('password');
   const [buttonListener, setButtonListener] = useState(false);
+  const [response, setResponse] = useState('');
+
+  const { user } = useContext(Context);
+
+  const loginHandler = async ({ email, password }) => {
+    setButtonListener(true);
+
+    try {
+      const data = await login(email, password);
+      user.setIsAuth(true);
+      dialog2.hide();
+    } catch (e) {
+      setResponse(e.response.data.message);
+    }
+  };
 
   const form = useFormState({
     values: { email: '', password: '' },
@@ -34,6 +52,11 @@ const Login = ({ changeWindow, dialog2 }) => {
           errors.password = 'Mandatory info missing';
         }
 
+        if (response === 'The email or password is incorrect') {
+          errors.email = '*';
+          errors.password = '*';
+        }
+
         if (Object.keys(errors).length) {
           throw errors;
         }
@@ -43,9 +66,16 @@ const Login = ({ changeWindow, dialog2 }) => {
     },
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      loginHandler(values);
     },
   });
+
+  useEffect(() => {
+    if (response === 'The email or password is incorrect') {
+      form.update('email', form.values.email);
+      form.update('password', '');
+    }
+  }, [response]);
 
   return (
     <>
@@ -88,9 +118,16 @@ const Login = ({ changeWindow, dialog2 }) => {
                 />
               </div>
 
+              {!response ? (
+                <></>
+              ) : (
+                <span className={styles.passwordHint}>The email or password is incorrect</span>
+              )}
+
               <FormSubmitButton
                 className={styles.sumbitButton}
                 onClick={() => {
+                  setResponse('');
                   setButtonListener(true);
                 }}
                 {...form}>
@@ -111,6 +148,5 @@ const Login = ({ changeWindow, dialog2 }) => {
       </div>
     </>
   );
-};
-
+});
 export default Login;

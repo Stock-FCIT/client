@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   unstable_useFormState as useFormState,
   unstable_Form as Form,
@@ -10,14 +10,31 @@ import closeDialog from '../../images/closeDialog.svg';
 
 import styles from './Register.module.scss';
 import Input from '../Input/Input';
+import { registration} from '../../http/userAPI';
+import { observer } from 'mobx-react-lite';
+import { Context } from '../../index';
 
-const Register = ({ changeWindow, dialog1 }) => {
+const Register = observer(({ changeWindow, dialog1 }) => {
   const handleWindowChange = () => {
     changeWindow(false);
   };
 
+  const { user } = useContext(Context);
+
   const [passVisibility, setPassVisibility] = useState('password');
   const [buttonListener, setButtonListener] = useState(false);
+  const [response, setResponse] = useState('');
+
+  const registerHandler = async ({ fullname, email, phone, password }) => {
+    try {
+      const data = await registration(fullname, email, phone, password);
+      setButtonListener(true);
+      user.setIsAuth(true);
+      dialog1.hide();
+    } catch (e) {
+      setResponse(e.response.data.message);
+    }
+  };
 
   const form = useFormState({
     values: { fullname: '', email: '', phone: '', password: '' },
@@ -38,6 +55,10 @@ const Register = ({ changeWindow, dialog1 }) => {
           errors.email = 'Mandatory info missing';
         }
 
+        if (response === 'User with this e-mail is already existed') {
+          errors.email = response;
+        }
+
         if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(values.email)) {
           errors.email = 'Email should have correct format';
         }
@@ -47,8 +68,17 @@ const Register = ({ changeWindow, dialog1 }) => {
           errors.phone = 'Mandatory info missing';
         }
 
+        if (response === 'User with this phone is already existed') {
+          errors.phone = response;
+        }
+
         if (values.phone && !/^\+?3?8?(0\d{9})$/g.test(values.phone)) {
           errors.phone = 'Wrong phone number';
+        }
+
+        if (response === 'User with this e-mail and phone is already existed') {
+          errors.email = 'User with this e-mail is already existed';
+          errors.phone = 'User with this phone is already existed';
         }
 
         //Pasword
@@ -66,6 +96,8 @@ const Register = ({ changeWindow, dialog1 }) => {
             'The password has to be at least 1 uppercase, 1 special symbol and 1 number';
         }
 
+        setResponse('');
+
         if (Object.keys(errors).length) {
           throw errors;
         }
@@ -75,9 +107,24 @@ const Register = ({ changeWindow, dialog1 }) => {
     },
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      registerHandler(values);
     },
   });
+
+  useEffect(() => {
+    if (response === 'User with this e-mail is already existed') {
+      form.update('email', form.values.email);
+    }
+
+    if (response === 'User with this phone is already existed') {
+      form.update('phone', form.values.phone);
+    }
+
+    if (response === 'User with this e-mail and phone is already existed"') {
+      form.update('email', form.values.email);
+      form.update('phone', form.values.phone);
+    }
+  }, [response]);
 
   return (
     <div>
@@ -167,6 +214,6 @@ const Register = ({ changeWindow, dialog1 }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Register;
