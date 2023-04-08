@@ -21,7 +21,7 @@ const UserMenu = observer(({ menu, fullname, email }) => {
     display: flex;
     flex-direction: column;
     position: relative;
-    margin-top: 18px;
+    margin-top: 16px;
     margin-left: -180px;
 
     z-index: 20;

@@ -10,7 +10,9 @@ export const registration = async (name, email, phone, password) => {
     role: 'ADMIN',
   });
   localStorage.setItem('token', data.token);
-  return jwt_decode(data.token);
+  const decode = jwt_decode(data.token);
+  localStorage.setItem('userId', decode.id);
+  return decode;
 };
 
 export const login = async (email, password) => {
