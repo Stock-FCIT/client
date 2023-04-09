@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import './Details.scss';
+import liked from '../../images/liked.svg';
+import cart from '../../images/cart.svg';
 
 import { fetchOnePlant } from '../../http/plantsAPI';
 
@@ -33,8 +35,8 @@ const Details = () => {
               <div className="name">{plant.name}</div>
               <div className="category">{category[plant.categoryId - 1]}</div>
               <div className="price">${plant.price}</div>
-              <div className="cartButton">Add to cart</div>
-              <div className="favouriteButton">Add to favourites</div>
+              <div className="cartButton">Add to cart<img className='images' src={cart} alt='cart'/></div>
+              <div className="favouriteButton">Add to favourites<img className='images' src={liked} alt='liked'/></div>
             </div>
           </div>
           <div className="lower">
