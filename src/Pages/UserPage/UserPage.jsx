@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import userPhoto from "../../images/userPhoto.png";
 import styles from "./UserPage.module.scss";
+import EditInfo from "../../components/EditInfo/EditInfo";
+import EditPassword from "../../components/EditPassword/EditPassword";
 
 const UserPage = () => {
   const [menuHandler, setMenuHandler] = useState(1);
@@ -25,7 +27,7 @@ const UserPage = () => {
             }
             onClick={() => setMenuHandler(2)}
           >
-            Order History
+            Orders History
           </div>
           <div
             className={
@@ -38,9 +40,12 @@ const UserPage = () => {
         </div>
 
         {menuHandler === 1 ? (
-          <div>Edit account</div>
+          <div>
+            <EditInfo />
+            <EditPassword />
+          </div>
         ) : menuHandler === 2 ? (
-          <div>Order history</div>
+          <div>Orders history</div>
         ) : (
           <div>Favourites</div>
         )}

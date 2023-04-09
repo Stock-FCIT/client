@@ -2,15 +2,13 @@
 
 .userContainer {
   font-family: "Heebo", sans-serif;
-
   display: flex;
-
   align-items: center;
   flex-direction: column;
-
   width: 70%;
   min-height: calc(100vh - 146px);
   margin: 0 auto;
+  margin-top: -20px;
   background-color: #fff;
 
   .userPhoto {
@@ -19,7 +17,7 @@
     height: 88px;
     border-radius: 50%;
     margin-bottom: 15px;
-    margin-top: 50px;
+    margin-top: 60px;
   }
 
   .userName {
@@ -30,6 +28,7 @@
     width: 60%;
     margin-top: 20px;
     .menuButtonContainer {
+      margin-bottom: 60px;
       display: flex;
       width: 100%;
     }
@@ -57,20 +56,20 @@
     .menuButtonActive {
       background: #4fbca1;
       color: #fff;
+      position: relative;
       &::after {
-        background: #4fbca1;
-        display: block;
-        position: fixed;
-        margin-left: 96px;
-        margin-top: 10px;
         content: "";
-        width: 25px;
-        height: 25px;
-        border: 1.3px solid #dedee0;
-        border-left: none;
-        border-top: none;
-        z-index: 1;
+        border: 12px solid transparent;
+        border-top: 12px solid #4fbca1;
+        background: #4fbca1;
+
+        position: absolute;
+        left: 50%;
+        margin-left: -12px;
+        bottom: -10px;
         transform: rotate(45deg);
+        width: 0;
+        z-index: 1001;
       }
     }
   }
