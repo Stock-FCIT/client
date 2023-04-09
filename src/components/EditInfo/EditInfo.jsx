@@ -1,61 +1,59 @@
-import React, { useState } from "react";
-
-import styles from "./EditInfo.module.scss";
+import React, { useState, useEffect } from 'react';
 import {
   unstable_useFormState as useFormState,
   unstable_Form as Form,
   unstable_FormSubmitButton as FormSubmitButton,
-} from "reakit/Form";
-import Input from "../Input/Input";
+} from 'reakit/Form';
+import Input from '../Input/Input';
 
-const EditInfo = () => {
+import styles from './EditInfo.module.scss';
+
+const EditInfo = ({ user }) => {
   const [buttonListener, setButtonListener] = useState(false);
+
   const form = useFormState({
     values: {
-      fullname: "",
-      email: "",
-      phone: "",
-      password: "",
-      country: "",
-      city: "",
-      address: "",
+      fullname: '',
+      email: '',
+      phone: '',
+      password: '',
+      country: '',
+      city: '',
+      address: '',
     },
     onValidate: (values) => {
       const errors = {};
       if (buttonListener) {
         // Full name
         if (!values.fullname) {
-          errors.fullname = "Mandatory info missing";
+          errors.fullname = 'Mandatory info missing';
         }
 
-        if (
-          values.fullname &&
-          !/([а-яА-яa-zA-z]+\s)+([а-яА-яa-zA-z]+)/gi.test(values.fullname)
-        ) {
-          errors.fullname = "Example: Tony Stark";
+        if (values.fullname && !/([а-яА-яa-zA-z]+\s)+([а-яА-яa-zA-z]+)/gi.test(values.fullname)) {
+          errors.fullname = 'Example: Tony Stark';
         }
 
         //Email
         if (!values.email) {
-          errors.email = "Mandatory info missing";
+          errors.email = 'Mandatory info missing';
         }
 
         if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(values.email)) {
-          errors.email = "Email should have correct format";
+          errors.email = 'Email should have correct format';
         }
 
         //Phone number
         if (!values.phone) {
-          errors.phone = "Mandatory info missing";
+          errors.phone = 'Mandatory info missing';
         }
 
         if (values.phone && !/^\+?3?8?(0\d{9})$/g.test(values.phone)) {
-          errors.phone = "Wrong phone number";
+          errors.phone = 'Wrong phone number';
         }
 
         //Pasword
         if (!values.password) {
-          errors.password = "Mandatory info missing";
+          errors.password = 'Mandatory info missing';
         }
 
         if (Object.keys(errors).length) {
@@ -68,6 +66,16 @@ const EditInfo = () => {
 
     onSubmit: (values) => {},
   });
+
+  useEffect(() => {
+    form.update('fullname', user.name);
+    form.update('email', user.email);
+    form.update('phone', user.phone);
+    form.update('country', user.country);
+    form.update('city', user.city);
+    form.update('address', user.address);
+  }, [user]);
+
   return (
     <div className={styles.editContainer}>
       <div className={styles.title}>Main information</div>
@@ -79,7 +87,6 @@ const EditInfo = () => {
           value={form.values.fullname}
           error={form.errors.fullname}
           form={form}
-          
         />
 
         {/* EMAIL */}
@@ -130,8 +137,7 @@ const EditInfo = () => {
           onClick={() => {
             setButtonListener(true);
           }}
-          {...form}
-        >
+          {...form}>
           Save
         </FormSubmitButton>
       </Form>
