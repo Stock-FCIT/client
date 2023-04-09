@@ -42,6 +42,10 @@ const EditPassword = () => {
           errors.confirmPassword = "Passwords do not match";
         }
 
+        //Check old password and new
+        if(values.password === values.newPassword){
+          errors.newPassword = "The new password must be different";
+        }
         if (Object.keys(errors).length) {
           throw errors;
         }
