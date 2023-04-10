@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import {
   unstable_useFormState as useFormState,
   unstable_Form as Form,
@@ -7,9 +8,17 @@ import {
 import Input from '../Input/Input';
 
 import styles from './EditInfo.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { updateUserInfo } from '../../http/userAPI';
+
 
 const EditInfo = ({ user }) => {
   const [buttonListener, setButtonListener] = useState(false);
+
+  const editHandler = async ({ fullname, email, phone, country, city, address }) => {
+    await updateUserInfo(fullname, email, phone, country, city, address);
+  };
 
   const form = useFormState({
     values: {
@@ -51,11 +60,6 @@ const EditInfo = ({ user }) => {
           errors.phone = 'Wrong phone number';
         }
 
-        //Pasword
-        if (!values.password) {
-          errors.password = 'Mandatory info missing';
-        }
-
         if (Object.keys(errors).length) {
           throw errors;
         }
@@ -64,8 +68,13 @@ const EditInfo = ({ user }) => {
       setButtonListener(false);
     },
 
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      editHandler(values);
+      notify();
+    },
   });
+
+  const notify = () => toast("You have successfully changed your information!");
 
   useEffect(() => {
     form.update('fullname', user.name);
@@ -78,6 +87,18 @@ const EditInfo = ({ user }) => {
 
   return (
     <div className={styles.editContainer}>
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className={styles.title}>Main information</div>
       <Form className={styles.form} {...form}>
         {/* FULL NAME */}
