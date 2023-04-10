@@ -39,3 +39,21 @@ export const getUserInfo = async () => {
   }
   return null;
 };
+
+export const updateUserInfo = async (name, email, phone, country, city, address) => {
+  const id = localStorage.getItem('userId');
+  if (id) {
+    const { data } = await $host.patch(`api/user/update/${id}`, {name, email, phone, country, city, address});
+    return data;
+  }
+  return null;
+};
+
+export const updateUserPassword = async (currentPassword, password) => {
+  const id = localStorage.getItem('userId');
+  if (id) {
+    const { data } = await $host.patch(`api/user/updatePassword/${id}`, {currentPassword, password});
+    return data;
+  }
+  return null;
+};
