@@ -7,16 +7,24 @@ import Details from './Pages/Details/Details';
 import UserPage from './Pages/UserPage/UserPage';
 import { observer } from 'mobx-react-lite';
 import { useContext, useEffect } from 'react';
-import { check, getUserInfo } from './http/userAPI';
+import { check } from './http/userAPI';
 import { Context } from './index';
+import NotFound from './Pages/NotFound/NotFound';
 
 const App = observer(() => {
   const { user } = useContext(Context);
 
-  useEffect(() => {
-    check().then((data) => {
+  const checkIsAuth = async () => {
+    try {
+      await check();
       user.setIsAuth(true);
-    });
+    } catch (e) {
+      console.log(e.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    checkIsAuth();
   }, []);
 
   return (
@@ -27,7 +35,8 @@ const App = observer(() => {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/plant/:id" element={<Details />} />
-            <Route path="/userPage" element={<UserPage />} />
+            <Route path="/userPage" element={user.isAuth ? <UserPage /> : <NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
