@@ -51,13 +51,6 @@ const Header = observer(() => {
         </Link>
 
         <div className={styles.headerRight}>
-          <a className={styles.svgLike} href="">
-            <img src={liked} alt="" />
-          </a>
-          <a className={styles.svgCart} href="">
-            <img src={cart} alt="" />
-          </a>
-
           {!user.isAuth ? (
             <>
               <DialogDisclosure
@@ -84,14 +77,18 @@ const Header = observer(() => {
               </DialogBackdrop>{' '}
             </>
           ) : (
-            <div className={styles.userBar}>
-              <div className={styles.welcomeName}>Welcome, {userName}!</div>
+            <>
+              <img className={styles.svgLike} src={liked} alt="" />
+              <img className={styles.svgLike} src={cart} alt="" />
+              <div className={styles.userBar}>
+                <div className={styles.welcomeName}>Welcome, {userName}!</div>
 
-              <MenuButton className={styles.menuButton} {...menu}>
-                <img src={userPhoto} alt="" />
-              </MenuButton>
-              <UserMenu menu={menu} fullname={userInfo.name} email={userInfo.email} />
-            </div>
+                <MenuButton className={styles.menuButton} {...menu}>
+                  <img src={userPhoto} alt="" />
+                </MenuButton>
+                <UserMenu menu={menu} fullname={userInfo.name} email={userInfo.email} />
+              </div>
+            </>
           )}
         </div>
       </div>

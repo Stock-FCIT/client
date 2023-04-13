@@ -39,13 +39,17 @@
       }
     }
 
+    .svgLike,
+    .svgCart {
+      cursor: pointer;
+      display: block;
+      margin-left: 30px;
+    }
+
     .headerRight {
       display: flex;
       justify-content: end;
       align-items: center;
-      .svgCart {
-        margin-left: 30px;
-      }
 
       .userBar {
         justify-content: right;
