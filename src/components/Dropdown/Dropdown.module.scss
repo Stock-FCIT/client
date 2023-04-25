@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap");
 
-.dropdownSSS {
+.dropdown {
   width: 100% !important ;
+  position: relative;
 }
 
 .dropdownSelectionCategory,
 .dropdownSelectionSort {
   width: 100%;
   box-sizing: border-box;
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
   border: 1px solid #dedee0;
   border-radius: 5px;
   font-size: 12px;
@@ -21,30 +22,32 @@
 }
 
 .dropdownSelectionCategory {
-  background-image: url('../../images/category.svg');
+  background-image: url("../../images/category.svg");
   height: 40px;
 }
 
 .dropdownSelectionSort {
-  background-image: url('../../images/sort.svg');
+  background-image: url("../../images/sort.svg");
   background-position: 10px 7px;
   height: 40px;
 }
 
 .itemsHolder {
+  margin-top: 42px;
+  width: 100%;
   box-sizing: border-box;
-  position: relative !important;
+  position: absolute !important;
   z-index: 1001;
   background-color: #fff;
   border: 1px solid #dedee0;
   border-radius: 5px;
   font-size: 14px;
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
   transform: none !important;
 }
 
 .dropdownItem {
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
 
   padding: 7px 10px;
   transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
@@ -80,3 +83,4 @@
   transition: ease-in 0.1s;
   pointer-events: none;
 }
+
