@@ -36,7 +36,7 @@ const Details = () => {
               <div className="category">{category[plant.categoryId - 1]}</div>
               <div className="price">${plant.price}</div>
               <div className="cartButton">Add to cart<img className='images' src={cart} alt='cart'/></div>
-              <div className="favouriteButton">Add to favourites<img className='images' src={liked} alt='liked'/></div>
+              <div className="favouriteButton">Add to favourites<img className='imagesFavourite' src={liked} alt='liked'/></div>
             </div>
           </div>
           <div className="lower">
