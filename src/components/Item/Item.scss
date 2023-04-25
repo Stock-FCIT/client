@@ -1,19 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap");
 
 .link {
   text-decoration: none;
 }
 
 .itemHolder {
-  height: fit-content;
+  height: 262px;
   width: fit-content;
   margin-bottom: 20px;
 
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 4px;
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
   color: #373738;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 
   .itemImage {
     margin: 4px;
@@ -24,20 +27,25 @@
   }
 
   .itemInfo {
-    margin-left: 12px;
-    margin-top: -38px;
+    margin-left: 5px;
+    display: flex;
+    height: 100%;
+    flex-direction:column;
+    justify-content: space-between;
     .itemName {
+      width: 80%;
       font-weight: 400;
       font-size: 15px;
       margin-bottom: 5px;
     }
 
     .favouriteWrapper {
-      position: relative;
-      left: 155px;
-      top: 12px;
+      position: absolute;
+      top: 157px;
+      right: 15px;
       width: fit-content;
       height: 32px;
+
 
       border-radius: 40px;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.163407);
@@ -58,6 +66,30 @@
       font-weight: 700;
       font-size: 18px;
       margin-bottom: 6px;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .itemHolder {
+    width: 170px;
+    height: 250px;
+    
+    .itemImage {
+      margin: 2px;
+      width: 165px;
+      height: 160px;
+      object-fit: cover;
+      object-position: 0 40%;
+    }
+
+    .itemInfo {
+      width: 90%;
+
+      .favouriteWrapper {
+        top: 146px;
+        right: 10px;
+      }
     }
   }
 }
