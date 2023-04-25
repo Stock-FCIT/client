@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap");
 
 .detailsWrapper {
   width: 50%;
   margin: 0 auto;
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
 
   .upper {
     display: flex;
@@ -69,7 +69,6 @@
         text-transform: uppercase;
 
         .images {
-          display: block;
           margin-left: 10px;
         }
 
@@ -97,5 +96,42 @@
       width: 82%;
     }
     padding-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .detailsWrapper {
+    width: 93%;
+
+    .upper {
+      .upperLeft {
+        height: 220px;
+        .image {
+          object-position: 50% 50%;
+        }
+      }
+
+      .upperRight {
+        .cartButton,
+        .favouriteButton {
+          font-size: 12px;
+
+          .imagesFavourite {
+            margin-right: 10%;
+          }
+        }
+      }
+    }
+
+    .lower {
+      .title {
+        text-align: center;
+      }
+
+      .description {
+        text-align: center;
+        width: 95%;
+      }
+    }
   }
 }
