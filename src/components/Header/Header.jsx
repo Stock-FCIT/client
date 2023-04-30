@@ -8,7 +8,7 @@ import styles from './Header.module.scss';
 
 import userPhoto from '../../images/userPhoto.png';
 import logo from '../../images/stock_logo.svg';
-import liked from '../../images/liked.svg';
+import Favourite from '../../images/favoutiteButton';
 import cart from '../../images/cart.svg';
 
 import Register from '../Register/Register';
@@ -78,7 +78,7 @@ const Header = observer(() => {
             </>
           ) : (
             <>
-              <img className={styles.svgLike} src={liked} alt="" />
+              <Favourite className={styles.svgLike} />
               <img className={styles.svgLike} src={cart} alt="" />
               <div className={styles.userBar}>
                 <div className={styles.welcomeName}>Welcome, {userName}!</div>

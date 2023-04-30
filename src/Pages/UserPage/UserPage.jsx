@@ -5,15 +5,25 @@ import EditInfo from '../../components/EditInfo/EditInfo';
 import EditPassword from '../../components/EditPassword/EditPassword';
 
 import { getUserInfo } from '../../http/userAPI';
+import UserFavorite from '../../components/UserFavorite/UserFavorite';
+import { getAllFavouritePlants, getFavouritePlants } from '../../http/favouriteAPI';
+import Item from '../../components/Item/Item';
 
 const UserPage = () => {
   const [menuHandler, setMenuHandler] = useState(1);
   const [userInfo, setUserInfo] = useState({});
+  const [favoriteItems, setFavoriteItems] = useState([]);
+  const [favouritePlantsId, setFavouritePlantsId] = useState();
 
   useEffect(() => {
     getUserInfo().then((data) => {
       setUserInfo(data);
     });
+    getAllFavouritePlants().then((data) => {
+      setFavoriteItems(data);
+    });
+    getFavouritePlants().then((data) => setFavouritePlantsId(data.map(item => item.plantId)));
+
   }, []);
 
   return (
@@ -48,7 +58,9 @@ const UserPage = () => {
         ) : menuHandler === 2 ? (
           <div>Orders history</div>
         ) : (
-          <div>Favourites</div>
+          <div>
+            {favoriteItems ? favoriteItems.map((obj) => <Item key={obj.id} {...obj} favourite={favouritePlantsId} />) : <></>}
+          </div>
         )}
       </div>
     </div>
