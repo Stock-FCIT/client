@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
 
 .userContainer {
-  font-family: "Heebo", sans-serif;
+  font-family: 'Heebo', sans-serif;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -25,12 +25,19 @@
   }
 
   .menu {
-    width: 60%;
+    width: 97%;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     .menuButtonContainer {
       margin-bottom: 60px;
       display: flex;
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .menuButton,
@@ -38,7 +45,7 @@
       padding-top: 26px;
       padding-bottom: 26px;
       text-align: center;
-      width: 33.3%;
+      width: 22%;
       border: 1.3px solid #dedee0;
       cursor: pointer;
       z-index: 5;
@@ -58,7 +65,7 @@
       color: #fff;
       position: relative;
       &::after {
-        content: "";
+        content: '';
         border: 12px solid transparent;
         border-top: 12px solid #4fbca1;
         background: #4fbca1;
@@ -72,6 +79,19 @@
         z-index: 1001;
       }
     }
+
+    .gridContainer {
+      display: grid;
+      width: 100%;
+      margin: 0 auto;
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 2%;
+      grid-row-gap: 1em;
+    }
+  }
+
+  .minContainer {
+    width: 66%;
   }
 }
 
