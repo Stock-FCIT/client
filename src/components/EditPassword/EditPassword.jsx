@@ -96,7 +96,6 @@ const EditPassword = () => {
   useEffect(() => {
     if (response === 'Current Password is incorrect!') {
       form.update('password', form.values.password);
-      console.log(response);
     }
   }, [response]);
 
