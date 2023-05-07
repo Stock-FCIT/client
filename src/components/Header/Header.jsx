@@ -79,7 +79,10 @@ const Header = observer(() => {
           ) : (
             <>
               <Favourite className={styles.svgLike} />
-              <img className={styles.svgLike} src={cart} alt="" />
+              <Link to="/cart">
+                <img className={styles.svgLike} src={cart} alt="" />
+              </Link>
+
               <div className={styles.userBar}>
                 <div className={styles.welcomeName}>Welcome, {userName}!</div>
 

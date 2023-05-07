@@ -1,0 +1,30 @@
+.mainCartWrapper {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: -20px;
+  background: #fff;
+  min-height: calc(100vh - 146px);
+
+  .infoWrapper {
+    padding: 69px 40px;
+    width: 100%;
+    .title {
+      font-weight: 400;
+      font-size: 25px;
+      margin-bottom: 35px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+
+      .leftWrapper {
+        width: 60%;
+      }
+      .rightWrapper{
+        width: 32%;
+      }
+    }
+  }
+}

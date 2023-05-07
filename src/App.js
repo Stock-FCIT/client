@@ -10,6 +10,7 @@ import { useContext, useEffect } from 'react';
 import { check } from './http/userAPI';
 import { Context } from './index';
 import NotFound from './Pages/NotFound/NotFound';
+import Cart from './Pages/Cart/Cart';
 
 const App = observer(() => {
   const { user } = useContext(Context);
@@ -36,6 +37,7 @@ const App = observer(() => {
             <Route path="/" element={<Main />} />
             <Route path="/plant/:id" element={<Details />} />
             <Route path="/userPage" element={user.isAuth ? <UserPage /> : <NotFound />} />
+            <Route path="/cart" element={user.isAuth ? <Cart /> : <NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
