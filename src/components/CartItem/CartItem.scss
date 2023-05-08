@@ -10,7 +10,7 @@
   width: 100%;
   margin-bottom: 20px;
 
-  .info {
+  .cartInfo {
     display: flex;
     align-items: center;
 
@@ -27,30 +27,37 @@
     .buttonsWrapper {
       display: flex;
       margin: 0 13px;
-
-      .trash {
-        margin-right: 5px;
-        cursor: pointer;
-      }
-
-      .changeTotal {
-        cursor: pointer;
+      .trashWrapper {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        border-radius: 100%;
-        background: #dedee0;
-        color: #707070;
-        font-size: 19px;
-        margin-left: 10px;
+        .trash {
+          margin-right: 5px;
+          cursor: pointer;
+        }
       }
 
-      .itemCounter {
+      .changeTotalWrapper {
         display: flex;
         align-items: center;
-        margin-left: 10px;
+        .changeTotal {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          border-radius: 100%;
+          background: #dedee0;
+          color: #707070;
+          font-size: 19px;
+          margin-left: 10px;
+        }
+
+        .itemCounter {
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+        }
       }
     }
   }
@@ -69,6 +76,44 @@
       font-weight: 700;
       font-size: 18px;
       letter-spacing: 0.5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .cartWrapper {
+    height: 100px;
+    width: 90%;
+    justify-content: start;
+
+    .priceWrapper {
+      padding-left: 10px;
+      margin-left: 10px;
+    }
+    .cartInfo {
+      .imageWrapper {
+        width: 130px;
+        height: 110px;
+      }
+
+      .buttonsWrapper {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+
+        .trashWrapper {
+          .trash {
+            margin: 0;
+          }
+        }
+        .changeTotalWrapper {
+          .changeTotal {
+            &:first-child {
+              margin: 0;
+            }
+          }
+        }
+      }
     }
   }
 }
