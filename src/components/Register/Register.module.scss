@@ -115,3 +115,29 @@ body {
     }
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .dialogContainer {
+    height: 455px;
+  }
+  .topSectionWrapper {
+    width: 80%;
+  }
+
+  .bottomDialog {
+    margin-bottom: -10px;
+    width: 100%;
+  }
+
+  .title {
+
+    margin-bottom: 20px;
+  }
+
+  .form {
+    .passwordHint{
+      width: 100%;
+      font-size: 11px;
+    }
+  }
+}

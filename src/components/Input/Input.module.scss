@@ -70,3 +70,12 @@
 .formSpanFilledError {
   color: #d50000;
 }
+
+@media only screen and (max-width: 480px) {
+  .formInput{
+    margin-bottom: 10px;
+  }
+  .formMessage {
+    width: 100%;
+  }
+}
