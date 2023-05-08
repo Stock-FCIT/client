@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap");
 
 .userContainer {
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -42,6 +42,9 @@
 
     .menuButton,
     .menuButtonActive {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding-top: 26px;
       padding-bottom: 26px;
       text-align: center;
@@ -65,7 +68,7 @@
       color: #fff;
       position: relative;
       &::after {
-        content: '';
+        content: "";
         border: 12px solid transparent;
         border-top: 12px solid #4fbca1;
         background: #4fbca1;
@@ -101,6 +104,11 @@
 
     .menu {
       width: 90%;
+      .menuButton,
+      .menuButtonActive {
+        height: 70px;
+        padding: 0 10px;
+      }
     }
   }
 }
