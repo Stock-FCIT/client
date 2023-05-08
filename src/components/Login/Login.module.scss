@@ -17,6 +17,7 @@ body {
   padding: 0 !important;
 }
 
+
 .closeDialog {
   position: absolute;
   right: 30px;
@@ -119,5 +120,17 @@ body {
         color: #00695c;
       }
     }
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+
+  .topSectionWrapper {
+    width: 80%;
+  }
+
+  .bottomDialog {
+    width: 100%;
   }
 }
