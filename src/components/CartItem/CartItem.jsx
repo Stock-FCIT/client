@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import trashcan from '../../images/trash.svg';
-import './CartItem.scss';
+import React, { useState } from "react";
+import trashcan from "../../images/trash.svg";
+import "./CartItem.scss";
 const CartItem = ({ image, price }) => {
   let [itemCounter, setItemCounter] = useState(1);
   let [totalPrice, setTotalPrice] = useState(price);
-
-
 
   const plusPrice = () => {
     setItemCounter(++itemCounter);
@@ -21,16 +19,21 @@ const CartItem = ({ image, price }) => {
 
   return (
     <div className="cartWrapper">
-      <div className="info">
+      <div className="cartInfo">
         <img className="imageWrapper" src={image} alt="" />
         <div className="buttonsWrapper">
-          <img className="trash" src={trashcan} alt="" />
-          <div className="changeTotal" onClick={() => minusPrice()}>
-            -
+          <div className="trashWrapper">
+            <img className="trash" src={trashcan} alt="" />
           </div>
-          <div className="itemCounter">{itemCounter}</div>
-          <div className="changeTotal" onClick={() => plusPrice()}>
-            +
+
+          <div className="changeTotalWrapper">
+            <div className="changeTotal" onClick={() => minusPrice()}>
+              -
+            </div>
+            <div className="itemCounter">{itemCounter}</div>
+            <div className="changeTotal" onClick={() => plusPrice()}>
+              +
+            </div>
           </div>
         </div>
       </div>
