@@ -36,8 +36,10 @@ const Item = observer(({ id, img, name, price, favourite }) => {
   };
 
   const sendAnalyt = () => {
-    ReactGA.event({ category: `Plant: ${name}`, action: `${name}` });
-    console.log('1121');
+    ReactGA.event({
+      category: `Plant: ${name}`,
+      action: `${name}`,
+    });
   };
 
   useEffect(() => {

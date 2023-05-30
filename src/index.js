@@ -9,10 +9,6 @@ export const Context = createContext(null);
 ReactGA.initialize('G-TDYLTSGHK8', {
   debug: true,
   titleCase: false,
-  gaOptions: {
-    userId: 123,
-    siteSpeedSampleRate: 100,
-  },
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
