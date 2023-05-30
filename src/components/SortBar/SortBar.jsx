@@ -1,18 +1,20 @@
-import React from "react";
-import "./SortBar.scss";
-import ReakitDropdown from "../Dropdown/Dropdown";
+import React, { useState, useEffect } from 'react';
+import './SortBar.scss';
+import ReakitDropdown from '../Dropdown/DropdownCategory';
+import { fetchCategory } from '../../http/plantsAPI';
+import DropdownCategory from '../Dropdown/DropdownCategory';
+import DropdownSort from '../Dropdown/DropdownSort';
 
-const SortBar = () => {
-  const category = [
-    "All",
-    "Easy care",
-    "Pet friendly",
-    "Bright light",
-    "Rare specimens",
-    "Air purifying",
-  ];
+const SortBar = ({setCategoryId, setSortId}) => {
+  const [category, setCategory] = useState();
 
-  const sort = ["Popular", "New"];
+  useEffect(() => {
+    fetchCategory().then((data) => setCategory(data));
+  }, []);
+
+  const sort = ['Popular', 'New'];
+
+
 
   return (
     <div className="main-bar">
@@ -25,15 +27,15 @@ const SortBar = () => {
       />
       <div className="helper">
         <div className="category-bar">
-          <ReakitDropdown
+          <DropdownCategory
             title="Choose category"
             items={category}
-            type="category"
+            setCategoryId={setCategoryId}
           />
         </div>
 
         <div className="sort-bar">
-          <ReakitDropdown title="Sorting" items={sort} />
+          <DropdownSort title="Sorting" items={sort} setSortId={setSortId} />
         </div>
       </div>
     </div>
