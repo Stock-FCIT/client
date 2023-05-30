@@ -2,8 +2,18 @@ import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import UserStore from './store/UserStore';
+import ReactGA from 'react-ga4';
 
 export const Context = createContext(null);
+
+ReactGA.initialize('G-TDYLTSGHK8', {
+  debug: true,
+  titleCase: false,
+  gaOptions: {
+    userId: 123,
+    siteSpeedSampleRate: 100,
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

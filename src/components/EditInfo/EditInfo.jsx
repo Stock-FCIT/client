@@ -74,7 +74,9 @@ const EditInfo = ({ user }) => {
     },
   });
 
-  const notify = () => toast("You have successfully changed your information!");
+  const notify = () => toast(
+    "You have successfully changed your information!"
+    );
 
   useEffect(() => {
     form.update('fullname', user.name);

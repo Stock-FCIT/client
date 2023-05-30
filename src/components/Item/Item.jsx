@@ -7,6 +7,7 @@ import './Item.scss';
 import Favourite from '../../images/favoutiteButton';
 
 import { setFavouritePlants, deleteFavouritePlants } from '../../http/favouriteAPI';
+import ReactGA from 'react-ga4';
 
 const Item = observer(({ id, img, name, price, favourite }) => {
   const [favouriteClass, setFavouriteClass] = useState('favouriteButton');
@@ -34,6 +35,11 @@ const Item = observer(({ id, img, name, price, favourite }) => {
     }
   };
 
+  const sendAnalyt = () => {
+    ReactGA.event({ category: `Plant: ${name}`, action: `${name}` });
+    console.log('1121');
+  };
+
   useEffect(() => {
     if (favourite) {
       setFavouriteClass(favourite.includes(id) ? 'favouriteButtonLiked' : 'favouriteButton');
@@ -43,7 +49,11 @@ const Item = observer(({ id, img, name, price, favourite }) => {
   return (
     <div className="link">
       <Link className="link" to={`/plant/${id}`}>
-        <div className="itemHolder">
+        <div
+          className="itemHolder"
+          onClick={() => {
+            sendAnalyt();
+          }}>
           <img className="itemImage" src={img} alt="" />
 
           <div className="itemInfo">

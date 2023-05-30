@@ -24,6 +24,7 @@ const App = observer(() => {
     }
   };
 
+
   useEffect(() => {
     checkIsAuth();
   }, []);

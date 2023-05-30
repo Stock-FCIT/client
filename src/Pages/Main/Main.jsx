@@ -9,6 +9,8 @@ import Item from '../../components/Item/Item';
 
 import { fetchPlants } from '../../http/plantsAPI';
 import { getFavouritePlants } from '../../http/favouriteAPI';
+
+
 const Main = observer(() => {
   const [plants, setPlants] = useState();
   const [favouritePlantsId, setFavouritePlantsId] = useState();
