@@ -103,12 +103,21 @@
     width: 100%;
 
     .menu {
-      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 95%;
       .menuButton,
       .menuButtonActive {
         height: 70px;
         padding: 0 10px;
       }
+
+      .gridContainer {
+        grid-template-columns: repeat(2, 1fr);
+        
+      }
     }
   }
+
 }
