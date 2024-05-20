@@ -6,7 +6,7 @@ import ReactGA from 'react-ga4';
 
 export const Context = createContext(null);
 
-ReactGA.initialize('G-TDYLTSGHK8', {
+ReactGA.initialize('G-XEKTH13474', {
   debug: true,
   titleCase: false,
 });
