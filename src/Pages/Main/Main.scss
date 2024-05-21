@@ -1,18 +1,27 @@
 .mainWrapper {
+  align-items: center;
   width: 60%;
   margin: 10px auto;
 }
 
 .wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+      width: 100%;
+      margin: 0 auto;
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 2%;
+      grid-row-gap: 1em;
 }
 
 @media only screen and (max-width: 480px) {
   .mainWrapper{
     flex-direction: column;
     width: 95%;    
+  }
+  .wrapper{
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 3.9%;
+    
   }
   
 }
