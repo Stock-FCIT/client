@@ -87,7 +87,6 @@
     .itemHolder {
       width: 170px;
       height: 250px;
-
       .itemImage {
         margin: 2px;
         width: 165px;
@@ -95,12 +94,10 @@
         object-fit: cover;
         object-position: 0 40%;
       }
-
       .itemInfo {
         width: 90%;
       }
     }
-
     .favouriteWrapper{
       right: 8px;
       top: 145px;

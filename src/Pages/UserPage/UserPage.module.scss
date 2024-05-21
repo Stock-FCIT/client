@@ -101,7 +101,6 @@
 @media only screen and (max-width: 480px) {
   .userContainer {
     width: 100%;
-
     .menu {
       display: flex;
       align-items: center;
@@ -112,12 +111,10 @@
         height: 70px;
         padding: 0 10px;
       }
-
       .gridContainer {
         grid-template-columns: repeat(2, 1fr);
-        
       }
     }
   }
-
 }
+
